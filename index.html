@@ -633,7 +633,7 @@
         }
 
         // Đnh nghĩa hàm addMessage trước
-        function addMessage(content, isUser = false, shouldSave = true) {
+        function addMessage(content, isUser = false) {
             const messagesDiv = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
@@ -643,25 +643,7 @@
                 </div>
             `;
             messagesDiv.appendChild(messageDiv);
-            
-            // Scroll xuống để hiện tin nhắn mới
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            
-            // Chỉ lưu tin nhắn mới
-            if (shouldSave) {
-                saveMessage(content, isUser);
-            }
-            
-            // Chỉ phát âm thanh cho tin nhắn bot và tin nhắn mới
-            if (!isUser && shouldSave && messageSound) {
-                try {
-                    messageSound.play().catch(err => {
-                        console.log('Audio playback error:', err);
-                    });
-                } catch (error) {
-                    console.error('Audio error:', error);
-                }
-            }
         }
 
         const lolichan = {
@@ -830,24 +812,6 @@
         // Chat history với giới hạn số lượng tin nhắn
         const MAX_HISTORY = 50; // Giới hạn 50 tin nhắn
         let chatHistory = [];
-
-        function loadChatHistory() {
-            try {
-                const savedHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
-                chatHistory = savedHistory.slice(-MAX_HISTORY); // Chỉ lấy 50 tin nhắn gần nhất
-                chatHistory.forEach(msg => {
-                    addMessage(msg.content, msg.isUser, false); // false = không lưu lại history
-                });
-            } catch (error) {
-                console.error('Error loading chat history:', error);
-                localStorage.removeItem('chatHistory'); // Xóa history nếu có lỗi
-            }
-        }
-
-        function saveMessage(content, isUser) {
-            chatHistory.push({ content, isUser });
-            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-        }
 
         // Theme switcher
         function setTheme(theme) {
