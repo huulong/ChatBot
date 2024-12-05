@@ -6,7 +6,7 @@
     <title>Loli Chatbot</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset CSS */
+       
         * {
             margin: 0;
             padding: 0;
@@ -23,7 +23,7 @@
             padding: 20px;
         }
 
-        /* Container chính */
+        
         .chat-container {
             width: 100%;
             max-width: 1200px;
@@ -36,7 +36,7 @@
             flex-direction: column;
         }
 
-        /* Header */
+
         .chat-header {
             background: linear-gradient(45deg, #f48fb1 0%, #ff94c2 100%);
             padding: 15px;
@@ -60,7 +60,7 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* Messages area */
+       
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -95,7 +95,7 @@
             color: white;
         }
 
-        /* Input area */
+        
         .chat-input {
             padding: 15px;
             background: white;
@@ -126,7 +126,7 @@
             white-space: nowrap;
         }
 
-        /* Modal */
+       
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -150,7 +150,7 @@
             text-align: center;
         }
 
-        /* Responsive Design */
+       
         @media (max-width: 768px) {
             body {
                 padding: 0;
@@ -194,7 +194,7 @@
             }
         }
 
-        /* Typing Indicator */
+       
         .typing-indicator {
             display: none;
             background: white;
@@ -219,7 +219,7 @@
             animation: typingBounce 0.5s infinite ease-in-out;
         }
 
-        /* Animations */
+        
         @keyframes messageIn {
             from { transform: translateY(10px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -230,7 +230,7 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* Avatar container và status badge */
+        
         .avatar-container {
             position: relative;
             display: inline-block;
@@ -251,7 +251,7 @@
             object-fit: cover;
         }
 
-        /* Modal avatar styles */
+        
         .modal .avatar-container {
             margin-bottom: 20px;
         }
@@ -270,7 +270,7 @@
             border-width: 3px;
         }
 
-        /* Status badge */
+       
         .status-badge {
             position: absolute;
             bottom: 2px;
@@ -294,7 +294,7 @@
             100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
         }
 
-        /* Theme variables */
+      
         :root {
             --primary-color: #f48fb1;
             --secondary-color: #ff94c2;
@@ -303,7 +303,6 @@
             --text-color: #333;
         }
 
-        /* Dark theme */
         [data-theme="dark"] {
             --primary-color: #9c27b0;
             --secondary-color: #ba68c8;
@@ -312,7 +311,7 @@
             --text-color: #fff;
         }
 
-        /* Kawaii theme */
+       
         [data-theme="kawaii"] {
             --primary-color: #ff69b4;
             --secondary-color: #ff9ed2;
@@ -321,7 +320,7 @@
             --text-color: #333;
         }
 
-        /* Avatar animations */
+        
         .chat-header img:hover {
             transform: scale(1.1) rotate(5deg);
             cursor: pointer;
@@ -336,7 +335,7 @@
             animation: bounce 0.5s ease infinite;
         }
 
-        /* Emoji picker */
+        
         .emoji-picker {
             position: absolute;
             bottom: 100%;
@@ -365,7 +364,7 @@
             background: #f0f0f0;
         }
 
-        /* Theme switcher */
+       
         .theme-switcher {
             position: absolute;
             top: 10px;
@@ -387,7 +386,7 @@
             user-select: none;
         }
 
-        /* Cho phép select text trong input và textarea */
+      
         input, textarea {
             -webkit-user-select: text;
             -moz-user-select: text;
@@ -447,7 +446,7 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <script>
-        // Tạo mảng các thông báo dễ thương từ Loli
+        
         const loliWarnings = [
             "Onii-chan hentai! Đừng làm vậy nha (｡•́︿•̀｡)",
             "Kyaaa~ Onii-chan đang cố làm gì với em vậy ạ? (＞﹏＜)",
@@ -458,12 +457,12 @@
             "Onii-chan ecchi! Không được động vào code của em! (｡>﹏<｡)"
         ];
 
-        // Hàm lấy random thông báo
+        
         function getRandomWarning() {
             return loliWarnings[Math.floor(Math.random() * loliWarnings.length)];
         }
 
-        // Ngăn chặn inspect element và các phím tắt debug
+       
         document.addEventListener('keydown', function(e) {
             if (e.ctrlKey && 
                 (e.keyCode === 67 || // C
@@ -477,19 +476,19 @@
             }
         });
 
-        // Vô hiệu hóa chuột phải
+        
         document.addEventListener('contextmenu', function(e) {
-            // Kiểm tra xem người dùng có đang cố inspect element không
+            
             if (e.target.closest('*')) {
                 const selection = window.getSelection().toString();
-                if (!selection) {  // Nếu không có text được chọn
+                if (!selection) {  
                     e.preventDefault();
                     showWarningModal(getRandomWarning());
                 }
             }
         });
 
-        // Vô hiệu hóa F12
+        
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12') {
                 e.preventDefault();
@@ -497,7 +496,7 @@
             }
         });
 
-        // Vô hiệu hóa view-source
+        
         if (window.location.href.indexOf('view-source:') !== -1) {
             window.location.href = window.location.href.replace('view-source:', '');
         }
@@ -508,10 +507,10 @@
             text.textContent = message;
             modal.style.display = 'flex';
             
-            // Add animation for avatar
+            
             const avatar = modal.querySelector('.avatar-container img');
             avatar.style.animation = 'none';
-            avatar.offsetHeight; // Trigger reflow
+            avatar.offsetHeight; 
             avatar.style.animation = 'shake 0.5s ease-in-out';
         }
 
@@ -543,7 +542,7 @@
             <h2>Loli-chan</h2>
         </div>
         <div class="chat-messages" id="chatMessages">
-            <!-- Messages will be added here -->
+           
             <div class="typing-indicator" id="typingIndicator">
                 <div class="typing-dots">
                     <div class="typing-dot"></div>
@@ -577,14 +576,13 @@
     </div>
 
     <script>
-        // Thêm vào đầu phần script
-        // Mã hóa các chuỗi nhạy cảm
+       
         const _0x1a2b3c = {
             encode: (str) => btoa(encodeURIComponent(str)),
             decode: (str) => decodeURIComponent(atob(str))
         };
 
-        // Mã hóa API endpoint
+        
         const API_ENDPOINT = _0x1a2b3c.encode('https://api.binjie.fun/api/generateStream');
 
         let onii_chan_name = '';
@@ -597,10 +595,10 @@
                 onii_chan_name = name;
                 document.getElementById('nameModal').style.display = 'none';
                 
-                // Kiểm tra xem đã có lịch sử chat chưa
+              
                 const hasHistory = localStorage.getItem('chatHistory');
                 
-                // Chỉ gửi tin nhắn chào mừng nếu không có lịch sử chat
+               
                 if (!hasHistory) {
                     setTimeout(() => {
                         addMessage(`Konnichiwa ${onii_chan_name}-oniichan! Em rất vui được nói chuyện với anh ٩(◕‿◕｡)۶`);
@@ -611,19 +609,19 @@
             }
         }
 
-        // Cho phép nhấn Enter để submit tên
+        
         document.getElementById('userName').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 startChat();
             }
         });
 
-        // Lưu tên người dùng vào localStorage
+        
         function saveUserName() {
             localStorage.setItem('onii_chan_name', onii_chan_name);
         }
 
-        // Load tên người dùng từ localStorage
+        
         function loadUserName() {
             const savedName = localStorage.getItem('onii_chan_name');
             if (savedName) {
@@ -632,7 +630,7 @@
             }
         }
 
-        // Đnh nghĩa hàm addMessage trước
+      
         function addMessage(content, isUser = false) {
             const messagesDiv = document.getElementById('chatMessages');
             const messageDiv = document.createElement('div');
@@ -657,7 +655,6 @@
                 const emojis = ['(◕‿◕✿)', '(｡♥‿♥｡)', '(≧◡≦)', '(＾▽＾)'];
                 const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-                // Kiểm tra câu hỏi về cưới người tạo ra
                 const marriageQuestions = [
                     'cưới người tạo',
                     'cưới anh long',
@@ -671,7 +668,7 @@
                     return `Kyaaa~ Em còn nhỏ lắm, chưa nghĩ tới chuyện đó đâu ạ! Với cả anh Long là người tạo ra em, là ân nhân của em nên em chỉ kính trọng anh ấy thôi (｡>﹏<｡)`;
                 }
 
-                // Kiểm tra câu hỏi về người tạo ra
+             
                 const creatorQuestions = [
                     'ai tạo ra em',
                     'ai làm ra em',
@@ -710,7 +707,7 @@
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
-                    // Đọc response dưới dạng text thay vì JSON
+                    
                     const responseText = await response.text();
                     
                     if (responseText) {
@@ -722,7 +719,7 @@
                 } catch (err) {
                     console.error('Error:', err);
                     
-                    // Fallback responses khi API khng hoạt động
+                    
                     const fallbackResponses = [
                         "Onii-chan, em rất vui khi được nói chuyện với anh (‿◕✿)",
                         "Ehehe~ Onii-chan thật là dễ thương (｡♥‿♥｡)",
@@ -737,35 +734,35 @@
             }
         };
 
-        // Sửa hàm sendMessage để hỗ trợ async
+        
         async function sendMessage() {
             const input = document.getElementById('userInput');
             const message = input.value.trim();
             const typingIndicator = document.getElementById('typingIndicator');
             
             if (message) {
-                // Hiển thị tin nhắn của user
+             
                 addMessage(message, true);
                 input.value = '';
                 
-                // Hiển thị typing indicator
+               
                 typingIndicator.style.display = 'block';
                 
-                // Scroll xuống để hiện typing indicator
+               
                 const messagesDiv = document.getElementById('chatMessages');
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
                 
                 try {
-                    // Đợi 1-2 giây để hiệu ứng typing được nhìn thấy
+                  
                     await new Promise(resolve => setTimeout(resolve, Math.random() * 1000 + 1000));
                     
-                    // Lấy response
+                  
                     const response = await lolichan.getResponse(message);
                     
-                    // Ẩn typing indicator
+                   
                     typingIndicator.style.display = 'none';
                     
-                    // Hiển thị tin nhắn phản hồi
+                   
                     addMessage(response);
                 } catch (error) {
                     console.error('Error:', error);
@@ -775,14 +772,14 @@
             }
         }
 
-        // Cho phép gửi tin nhắn bằng phím Enter
+        
         document.getElementById('userInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 sendMessage();
             }
         });
 
-        // Add status update function
+       
         function updateStatus(isOnline) {
             const badges = document.querySelectorAll('.status-badge');
             badges.forEach(badge => {
@@ -796,30 +793,30 @@
             });
         }
 
-        // Monitor connection status
+        
         let isOnline = true;
         window.addEventListener('online', () => updateStatus(true));
         window.addEventListener('offline', () => updateStatus(false));
 
-        // Simulate random status changes
+    
         setInterval(() => {
-            if (Math.random() < 0.1) { // 10% chance to change status
+            if (Math.random() < 0.1) { 
                 isOnline = !isOnline;
                 updateStatus(isOnline);
             }
         }, 30000);
 
-        // Chat history với giới hạn số lượng tin nhắn
-        const MAX_HISTORY = 50; // Giới hạn 50 tin nhắn
+       
+        const MAX_HISTORY = 50; 
         let chatHistory = [];
 
-        // Theme switcher
+        
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('preferred-theme', theme);
         }
 
-        // Emoji picker
+        
         const emojis = ['😊', '😂', '🥰', '😍', '😘', '😋', '😎', '', '😭', '😤', '😡', '🥳', '🤔', '😴', '🤗', '😇'];
 
         function createEmojiPicker() {
@@ -842,7 +839,7 @@
             picker.classList.toggle('active');
         }
 
-        // Khai báo và khởi tạo messageSound
+       
         let messageSound = null;
 
         function initAudio() {
@@ -854,26 +851,25 @@
             }
         }
 
-        // Thêm vào phần initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Load saved theme
+         
             const savedTheme = localStorage.getItem('preferred-theme') || 'light';
             setTheme(savedTheme);
 
-            // Load user name
+        
             loadUserName();
             
-            // Load chat history
+           
             loadChatHistory();
 
-            // Create emoji picker
+           
             createEmojiPicker();
             
-            // Initialize audio
+          
             initAudio();
         });
 
-        // Close emoji picker when clicking outside
+       
         document.addEventListener('click', (e) => {
             const picker = document.getElementById('emojiPicker');
             const emojiBtn = e.target.closest('button');
@@ -882,19 +878,19 @@
             }
         });
 
-        // Thêm console warning
+       
         console.log = console.warn = console.error = function() {
             console.clear();
             alert("Không được phép sử dụng Developer Tools!");
         };
 
-        // Chống copy paste
+        
         document.addEventListener('copy', function(e) {
             e.preventDefault();
             alert('Không được phép copy nội dung!');
         });
 
-        // Thêm watermark động
+       
         setInterval(() => {
             const watermark = document.createElement('div');
             watermark.style.position = 'fixed';
